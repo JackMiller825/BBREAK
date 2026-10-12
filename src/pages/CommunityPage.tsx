@@ -40,10 +40,6 @@ export function CommunityPage() {
             community.
           </p>
           <SocialActions />
-          <div className="promise">
-            <p className="promise-label">COMMUNITY PROMISE</p>
-            <p>Independent fan project • No endorsement • No financial promises</p>
-          </div>
         </div>
         <img
           className="panel-mark"
