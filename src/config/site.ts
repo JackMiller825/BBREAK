@@ -65,7 +65,6 @@ export const tokenomicItems = [
 
 export const assets = {
   logo: "/assets/bbreak/bbreak-logo-transparent.png",
-  heroBanner: "/assets/bbreak/hero-stage.jpg",
   bannerWide: "/assets/bbreak/bbreak-banner-3to1.png",
   bannerCommunity: "/assets/bbreak/bbreak-banner-1100x520.png",
   stickerDir: "/assets/bbreak/stickers/chat-512",
