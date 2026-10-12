@@ -40,7 +40,7 @@ describe("routes and pending facts", () => {
       screen.getByRole("heading", { level: 1, name: /tokenomics, clearly marked/i }),
     ).toBeInTheDocument()
     expect(screen.getByRole("button", { name: /copy address/i })).toBeEnabled()
-    expect(screen.getAllByText("Coming Soon..").length).toBeGreaterThan(0)
+    expect(screen.getAllByText("0xdbba341bb3b143371452580cbf5eb1058cea9f8e").length).toBeGreaterThan(0)
     expect(screen.getByText("1,000,000,000")).toBeInTheDocument()
     expect(screen.queryByText(/ethereum mainnet • contract coming soon/i)).not.toBeInTheDocument()
     expect(screen.queryByText(/do not use a placeholder/i)).not.toBeInTheDocument()

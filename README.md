@@ -24,7 +24,7 @@ Facts shown on the site come from [`src/config/site.ts`](src/config/site.ts).
 | Fact | Value |
 | --- | --- |
 | Network | Ethereum Mainnet |
-| Contract address | Coming Soon.. |
+| Contract address | `0xdbba341bb3b143371452580cbf5eb1058cea9f8e` |
 | Total supply | 1,000,000,000 |
 | Buy / sell tax | 0% |
 | Liquidity status | Burn |
@@ -32,7 +32,7 @@ Facts shown on the site come from [`src/config/site.ts`](src/config/site.ts).
 | X | [https://x.com/bbreak_eth](https://x.com/bbreak_eth) |
 | Telegram | [https://t.me/BBREAK_ETH](https://t.me/BBREAK_ETH) |
 
-Intended network is not proof that a contract is deployed. Leave `contractAddress` as `null` until a real address is confirmed. **Copy Address** copies `Coming Soon..` until that field is a non-empty address. Trade, chart, and explorer links stay empty until they are set in the same file.
+**Copy Address** copies `contractAddress` from that file. Trade, chart, and explorer links stay empty until they are set there.
 
 ## Local development
 

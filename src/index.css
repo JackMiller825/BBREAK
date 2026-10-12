@@ -217,6 +217,8 @@ a { color: inherit; }
   gap: 28px;
 }
 
+.page > * { min-width: 0; }
+
 .eyebrow {
   color: var(--turquoise-text);
   font-size: 12px;
@@ -382,7 +384,7 @@ a { color: inherit; }
 .accent-navy::before { background: var(--navy); }
 
 .info-card h3, .step-card h3, .chapter h3 { color: var(--navy); }
-.info-card p, .step-card p { margin-top: 8px; }
+.info-card p, .step-card p { margin-top: 8px; overflow-wrap: anywhere; }
 
 .chapter {
   position: relative;
@@ -455,6 +457,7 @@ a { color: inherit; }
   display: flex;
   align-items: center;
   gap: 12px;
+  min-width: 0;
 }
 .contract-row .btn { flex: 0 0 auto; }
 .contract-status { margin-top: 10px; min-height: 1.2em; }

@@ -27,7 +27,7 @@ export const site: SiteConfig = {
   name: "Buterin Beach Break",
   ticker: "BBREAK",
   network: "Ethereum Mainnet",
-  contractAddress: null,
+  contractAddress: "0xdbba341bb3b143371452580cbf5eb1058cea9f8e",
   tokenomics: {
     supply: "1,000,000,000",
     taxes: "0%",
