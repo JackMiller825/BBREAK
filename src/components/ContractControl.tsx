@@ -66,19 +66,21 @@ export function ContractControl({ address }: { address: string | null }) {
       }
       selectVisibleAddress()
       setStatus("error")
-      setMessage("Clipboard isn’t available. Select the address below and copy it manually.")
+      setMessage("Clipboard isn’t available. Select the address and copy it manually.")
     }
   }
 
   return (
     <div className="contract-control">
-      <button type="button" className="btn btn-primary" onClick={copyAddress}>
-        {status === "copied" ? "Copied" : "Copy Address"}
-      </button>
+      <div className="contract-row">
+        <p className="copy-address">{value}</p>
+        <button type="button" className="btn btn-primary" onClick={copyAddress}>
+          {status === "copied" ? "Copied" : "Copy Address"}
+        </button>
+      </div>
       <p className="contract-status" role="status" aria-live="polite">
         {message}
       </p>
-      <p className="copy-address">{value}</p>
     </div>
   )
 }

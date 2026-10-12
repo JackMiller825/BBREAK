@@ -28,7 +28,7 @@ export function StoryPage() {
     <div className="page">
       <PageMeta
         title={`Story — ${site.name} ($${site.ticker})`}
-        description="A fictional travel-poster origin story for an independent Ethereum community concept. No official Vitalik connection is claimed."
+        description="A fictional travel-poster origin story for an independent Ethereum community concept."
         path="/story"
       />
 
@@ -36,8 +36,7 @@ export function StoryPage() {
         <p className="eyebrow">BUTERIN BEACH BREAK</p>
         <h1>The badge took a day off.</h1>
         <p className="lede">
-          A fictional travel-poster origin story for an independent Ethereum community concept. No
-          official Vitalik connection is claimed.
+          A fictional travel-poster origin story for an independent Ethereum community concept.
         </p>
       </header>
 
@@ -50,13 +49,6 @@ export function StoryPage() {
             the sun; its shadow looked suspiciously like a palm tree. The mascot followed it to the
             shore.
           </p>
-          <div className="status-callout">
-            <h3>Invented community lore</h3>
-            <p>
-              This is a creative origin story, not a factual account or an official Vitalik
-              announcement.
-            </p>
-          </div>
         </div>
         <img
           className="panel-mark"

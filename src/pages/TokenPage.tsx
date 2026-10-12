@@ -26,30 +26,20 @@ export function TokenPage() {
     <div className="page">
       <PageMeta
         title={`Tokenomics — ${site.name} (${tickerLabel})`}
-        description="Tokenomics for Buterin Beach Break. The contract address is not published yet."
+        description="Tokenomics for Buterin Beach Break."
         path="/token"
       />
 
       <header className="page-intro">
         <p className="eyebrow">BUTERIN BEACH BREAK</p>
         <h1>Tokenomics, clearly marked.</h1>
-        <p className="lede">
-          Supply, tax, liquidity, and ownership are listed below. The contract address is not
-          published yet.
-        </p>
       </header>
 
       <section className="panel panel-navy token-summary" aria-labelledby="token-name">
-        <p className="eyebrow">
-          {isConfigured(site.contractAddress)
-            ? "ETHEREUM MAINNET • CONTRACT PUBLISHED"
-            : "ETHEREUM MAINNET • CONTRACT COMING SOON"}
-        </p>
         <h2 id="token-name">BUTERIN BEACH BREAK</h2>
         <p className="ticker-line">
           Ticker: <span>{tickerLabel}</span>
         </p>
-        <p>Do not use a placeholder as a real contract. The address shown can still be copied.</p>
         <ContractControl address={site.contractAddress} />
       </section>
 
@@ -88,14 +78,6 @@ export function TokenPage() {
           ))}
         </ol>
       </section>
-
-      <aside className="panel panel-sand safety-note">
-        <h2>Safety note</h2>
-        <p>
-          This is not a live buying guide until a contract address is published. Confirm the
-          Ethereum mainnet address before interacting.
-        </p>
-      </aside>
     </div>
   )
 }

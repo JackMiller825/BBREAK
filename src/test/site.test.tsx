@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from "@testing-library/react"
+import { fireEvent, render, screen, within } from "@testing-library/react"
 import { MemoryRouter } from "react-router-dom"
 import { describe, expect, it, vi } from "vitest"
 import { AppRoutes } from "../App"
@@ -25,6 +25,8 @@ describe("routes and pending facts", () => {
 
     const story = renderAt("/story")
     expect(screen.getByRole("heading", { level: 1, name: /the badge took a day off/i })).toBeInTheDocument()
+    expect(screen.queryByText(/no official vitalik connection is claimed/i)).not.toBeInTheDocument()
+    expect(screen.queryByText(/invented community lore/i)).not.toBeInTheDocument()
     story.unmount()
   })
 
@@ -40,6 +42,10 @@ describe("routes and pending facts", () => {
     expect(screen.getByRole("button", { name: /copy address/i })).toBeEnabled()
     expect(screen.getAllByText("Coming Soon..").length).toBeGreaterThan(0)
     expect(screen.getByText("1,000,000,000")).toBeInTheDocument()
+    expect(screen.queryByText(/ethereum mainnet • contract coming soon/i)).not.toBeInTheDocument()
+    expect(screen.queryByText(/do not use a placeholder/i)).not.toBeInTheDocument()
+    expect(screen.queryByText(/the contract address is not published yet/i)).not.toBeInTheDocument()
+    expect(screen.queryByRole("heading", { name: /safety note/i })).not.toBeInTheDocument()
     token.unmount()
 
     renderAt("/community")
@@ -49,15 +55,26 @@ describe("routes and pending facts", () => {
     expect(screen.queryByText(/was not supplied/i)).not.toBeInTheDocument()
     expect(screen.getAllByRole("img", { name: /sticker showing a/i })).toHaveLength(12)
     expect(screen.queryByRole("img", { name: /sticker image is not available/i })).not.toBeInTheDocument()
+    expect(screen.queryByRole("heading", { name: /frequently asked/i })).not.toBeInTheDocument()
   })
 
   it("links the published social profiles", () => {
     renderAt("/")
-    expect(screen.getByRole("link", { name: /^telegram$/i })).toHaveAttribute(
+    const footer = screen.getByRole("contentinfo")
+    expect(within(footer).queryByRole("link", { name: /^home$/i })).not.toBeInTheDocument()
+    expect(within(footer).queryByRole("link", { name: /^story$/i })).not.toBeInTheDocument()
+    expect(within(footer).queryByRole("link", { name: /^tokenomics$/i })).not.toBeInTheDocument()
+    expect(within(footer).queryByRole("link", { name: /^community$/i })).not.toBeInTheDocument()
+    expect(within(footer).getByRole("link", { name: /^telegram$/i })).toHaveAttribute(
       "href",
       "https://t.me/BBREAK_ETH",
     )
-    expect(screen.getByRole("link", { name: /^x$/i })).toHaveAttribute("href", "https://x.com/bbreak_eth")
+    expect(within(footer).getByRole("link", { name: /^x$/i })).toHaveAttribute(
+      "href",
+      "https://x.com/bbreak_eth",
+    )
+    expect(screen.getAllByRole("link", { name: /^telegram$/i })).toHaveLength(2)
+    expect(screen.getAllByRole("link", { name: /^x$/i })).toHaveLength(2)
     expect(screen.queryByText("NAME: BUTERIN BEACH BREAK")).not.toBeInTheDocument()
     expect(screen.queryByText(/contract: not published/i)).not.toBeInTheDocument()
     expect(screen.getByRole("link", { name: /explore the story/i })).toHaveAttribute("href", "/story")
@@ -69,18 +86,6 @@ describe("routes and pending facts", () => {
     expect(screen.getByRole("heading", { level: 1, name: /the badge took a day off/i })).toBeInTheDocument()
   })
 
-  it("expands and collapses FAQ answers from the keyboard control", () => {
-    renderAt("/community")
-    const question = screen.getByRole("button", { name: /what is the contract address/i })
-    expect(question).toHaveAttribute("aria-expanded", "false")
-    fireEvent.click(question)
-    expect(question).toHaveAttribute("aria-expanded", "true")
-    expect(
-      screen.getByText(/a contract address will only be added when confirmed/i),
-    ).toBeVisible()
-    fireEvent.click(question)
-    expect(question).toHaveAttribute("aria-expanded", "false")
-  })
 })
 
 describe("contract copy", () => {
@@ -106,7 +111,7 @@ describe("contract copy", () => {
     })
     render(<ContractControl address="0xdef456" />)
     fireEvent.click(screen.getByRole("button", { name: /copy address/i }))
-    expect(await screen.findByText(/select the address below/i)).toBeInTheDocument()
+    expect(await screen.findByText(/select the address and copy it manually/i)).toBeInTheDocument()
     expect(screen.getByText("0xdef456")).toBeInTheDocument()
   })
 

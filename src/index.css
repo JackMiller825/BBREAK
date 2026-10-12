@@ -451,10 +451,18 @@ a { color: inherit; }
 .ticker-line span { color: var(--coral); font-weight: 800; }
 
 .contract-control { margin-top: 18px; }
-.contract-status { margin-top: 10px; }
+.contract-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.contract-row .btn { flex: 0 0 auto; }
+.contract-status { margin-top: 10px; min-height: 1.2em; }
 
 .copy-address {
-  margin-top: 10px;
+  margin: 0;
+  flex: 1 1 auto;
+  min-width: 0;
   padding: 12px 14px;
   border-radius: 12px;
   background: white;
@@ -583,20 +591,33 @@ a { color: inherit; }
 .footer-name { color: white; font-weight: 800; letter-spacing: 0.06em; }
 .footer-tag { color: #c9d4e3; font-size: 14px; margin-top: 4px; }
 
-.footer-nav { display: flex; gap: 22px; flex-wrap: wrap; }
-.footer-nav a {
-  color: white;
-  text-decoration: none;
-  font-size: 13px;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+.footer-social {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
 }
 
-.footer-nav a[aria-current="page"] {
-  text-decoration: underline;
-  text-decoration-color: var(--coral);
-  text-underline-offset: 4px;
+.footer-social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  color: var(--navy);
+  background: white;
+}
+
+.footer-social a:hover,
+.footer-social a:focus-visible {
+  background: var(--coral);
+}
+
+.footer-social svg {
+  width: 20px;
+  height: 20px;
+  display: block;
 }
 
 .footer-status, .footer-note { grid-column: 1 / -1; }
@@ -742,7 +763,7 @@ a { color: inherit; }
   .page, .footer-inner { width: min(1120px, calc(100% - 28px)); }
   .grid-2, .grid-3, .chapters, .steps { grid-template-columns: 1fr; }
   .chapter:last-child, .steps li:last-child, .grid-3 > :last-child { grid-column: auto; }
-  .footer-inner { grid-template-columns: 1fr; align-items: start; }
+  .footer-inner { grid-template-columns: 1fr auto; align-items: center; }
   .sticker-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .faq-button { font-size: 18px; }
   h1 { font-size: 40px; }

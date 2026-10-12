@@ -1,4 +1,3 @@
-import { FAQ } from "../components/FAQ"
 import { InfoCard } from "../components/InfoCard"
 import { PageMeta } from "../components/PageMeta"
 import { SocialActions } from "../components/SocialActions"
@@ -11,29 +10,6 @@ import {
   stickers,
   tickerLabel,
 } from "../config/site"
-
-const faqs = [
-  {
-    question: "Is Buterin Beach Break affiliated with Vitalik?",
-    answer:
-      "No. It is an independent fan concept; no endorsement or partnership is implied.",
-  },
-  {
-    question: "What is the contract address?",
-    answer:
-      "Coming Soon. A contract address will only be added when confirmed through official project channels.",
-  },
-  {
-    question: "What are the tokenomics?",
-    answer:
-      "Total supply is 1,000,000,000. Buy and sell tax is 0%. Liquidity status is Burn. Ownership status is Renounce.",
-  },
-  {
-    question: "How do I buy?",
-    answer:
-      "No buying link is available yet. Wait for a confirmed contract and verified trading links, then confirm the Ethereum mainnet network and contract address before interacting.",
-  },
-]
 
 export function CommunityPage() {
   const available = new Set(stickerFileNames())
@@ -159,8 +135,6 @@ export function CommunityPage() {
           })}
         </ul>
       </section>
-
-      <FAQ items={faqs} heading="Frequently asked before the tide comes in." />
     </div>
   )
 }
