@@ -46,7 +46,9 @@ describe("routes and pending facts", () => {
     expect(
       screen.getByRole("heading", { level: 1, name: /meet us by the palm shadow/i }),
     ).toBeInTheDocument()
-    expect(screen.getAllByRole("img", { name: /sticker image is not available/i })).toHaveLength(12)
+    expect(screen.queryByText(/was not supplied/i)).not.toBeInTheDocument()
+    expect(screen.getAllByRole("img", { name: /sticker showing a/i })).toHaveLength(12)
+    expect(screen.queryByRole("img", { name: /sticker image is not available/i })).not.toBeInTheDocument()
   })
 
   it("links the published social profiles", () => {

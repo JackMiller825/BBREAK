@@ -1,0 +1,13 @@
+number,emotion,master_path,master_dimensions,master_transparency,chat_path,chat_dimensions,chat_transparency
+001,happy,masters-1024/001-bbreak-happy.png,1024x1024,true,chat-512/001-bbreak-happy.png,512x512,true
+002,laughing,masters-1024/002-bbreak-laughing.png,1024x1024,true,chat-512/002-bbreak-laughing.png,512x512,true
+003,excited,masters-1024/003-bbreak-excited.png,1024x1024,true,chat-512/003-bbreak-excited.png,512x512,true
+004,sad,masters-1024/004-bbreak-sad.png,1024x1024,true,chat-512/004-bbreak-sad.png,512x512,true
+005,angry,masters-1024/005-bbreak-angry.png,1024x1024,true,chat-512/005-bbreak-angry.png,512x512,true
+006,scared,masters-1024/006-bbreak-scared.png,1024x1024,true,chat-512/006-bbreak-scared.png,512x512,true
+007,shocked,masters-1024/007-bbreak-shocked.png,1024x1024,true,chat-512/007-bbreak-shocked.png,512x512,true
+008,confused,masters-1024/008-bbreak-confused.png,1024x1024,true,chat-512/008-bbreak-confused.png,512x512,true
+009,smug,masters-1024/009-bbreak-smug.png,1024x1024,true,chat-512/009-bbreak-smug.png,512x512,true
+010,embarrassed,masters-1024/010-bbreak-embarrassed.png,1024x1024,true,chat-512/010-bbreak-embarrassed.png,512x512,true
+011,loving,masters-1024/011-bbreak-loving.png,1024x1024,true,chat-512/011-bbreak-loving.png,512x512,true
+012,tired,masters-1024/012-bbreak-tired.png,1024x1024,true,chat-512/012-bbreak-tired.png,512x512,true
