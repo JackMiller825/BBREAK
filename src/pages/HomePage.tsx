@@ -3,7 +3,7 @@ import { InfoCard } from "../components/InfoCard"
 import { PageMeta } from "../components/PageMeta"
 import { SocialActions } from "../components/SocialActions"
 import { ContractControl } from "../components/ContractControl"
-import { assets, joinPath, logoAlt, site, tokenomicItems } from "../config/site"
+import { assets, joinPath, site, tokenomicItems } from "../config/site"
 
 export function HomePage() {
   return (
@@ -14,7 +14,15 @@ export function HomePage() {
         path="/"
       />
 
-      <section className="hero panel panel-aqua">
+      <section className="hero hero-with-banner panel panel-aqua">
+        <img
+          className="hero-banner"
+          src={assets.heroBanner}
+          alt="Theater stage with a vintage microphone character presenting seated guests under red curtains and warm spotlights."
+          width={1280}
+          height={720}
+          decoding="sync"
+        />
         <div className="hero-copy">
           <p className="eyebrow">AN UNOFFICIAL ETHEREUM BEACH BREAK</p>
           <h1>
@@ -34,22 +42,6 @@ export function HomePage() {
               JOIN THE COMMUNITY
             </Link>
           </div>
-        </div>
-        <div
-          className="hero-art"
-          tabIndex={0}
-          aria-describedby="hero-art-hint"
-        >
-          <img
-            src={assets.logo}
-            alt={logoAlt}
-            width={1024}
-            height={1024}
-            decoding="sync"
-          />
-          <p id="hero-art-hint" className="sr-only">
-            Hover or focus to preview a restrained crystal-badge glow and palm-shadow shimmer.
-          </p>
         </div>
       </section>
 

@@ -56,6 +56,7 @@ Stack: Vite, React, TypeScript, React Router, and plain CSS.
 
 Public images live under `public/assets/bbreak/`:
 
+- `hero-stage.jpg` — homepage banner
 - `bbreak-logo-transparent.png`
 - `bbreak-banner-3to1.png`
 - `bbreak-banner-1100x520.png`
