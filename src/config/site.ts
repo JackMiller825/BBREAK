@@ -29,15 +29,15 @@ export const site: SiteConfig = {
   network: "Ethereum Mainnet",
   contractAddress: null,
   tokenomics: {
-    supply: null,
-    taxes: null,
-    liquidity: null,
-    ownership: null,
+    supply: "1,000,000,000",
+    taxes: "0%",
+    liquidity: "Burn",
+    ownership: "Renounce",
   },
   links: {
     domain: "https://bbreak.site",
-    twitter: null,
-    telegram: null,
+    twitter: "https://x.com/bbreak_eth",
+    telegram: "https://t.me/BBREAK_ETH",
     trade: null,
     chart: null,
     explorer: null,
@@ -54,6 +54,15 @@ export function isConfigured(value: string | null | undefined): value is string 
 
 export const tickerLabel = `$${site.ticker}`
 
+export const comingSoon = "Coming Soon.."
+
+export const tokenomicItems = [
+  { title: "Total Supply", body: site.tokenomics.supply ?? comingSoon, accent: "coral" },
+  { title: "Buy / Sell tax", body: site.tokenomics.taxes ?? comingSoon, accent: "violet" },
+  { title: "Liquidity Status", body: site.tokenomics.liquidity ?? comingSoon, accent: "turquoise" },
+  { title: "Ownership Status", body: site.tokenomics.ownership ?? comingSoon, accent: "navy" },
+] as const
+
 export const assets = {
   logo: "/assets/bbreak/bbreak-logo-transparent.png",
   bannerWide: "/assets/bbreak/bbreak-banner-3to1.png",
@@ -64,7 +73,7 @@ export const assets = {
 export const navItems = [
   { label: "Home", to: "/" },
   { label: "Story", to: "/story" },
-  { label: "Token", to: "/token" },
+  { label: "Tokenomics", to: "/token" },
   { label: "Community", to: "/community" },
 ] as const
 

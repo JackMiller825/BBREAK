@@ -2,7 +2,8 @@ import { Link } from "react-router-dom"
 import { InfoCard } from "../components/InfoCard"
 import { PageMeta } from "../components/PageMeta"
 import { SocialActions } from "../components/SocialActions"
-import { assets, isConfigured, joinPath, logoAlt, site } from "../config/site"
+import { ContractControl } from "../components/ContractControl"
+import { assets, joinPath, logoAlt, site, tokenomicItems } from "../config/site"
 
 export function HomePage() {
   return (
@@ -30,14 +31,9 @@ export function HomePage() {
               EXPLORE THE STORY
             </Link>
             <Link className="btn btn-secondary" to={joinPath}>
-              COMMUNITY LINKS TBD
-              <span className="sr-only">
-                {" "}
-                Opens the community section. Social profiles are not published yet.
-              </span>
+              JOIN THE COMMUNITY
             </Link>
           </div>
-          <p className="name-badge">NAME: BUTERIN BEACH BREAK</p>
         </div>
         <div
           className="hero-art"
@@ -78,40 +74,27 @@ export function HomePage() {
           <InfoCard
             accent="turquoise"
             title="THE DISCLAIMER"
-            body="Independent community concept. No endorsement or affiliation is implied."
+            body="Independent community concept. No endorsement or affiliation is implied"
           />
         </div>
       </section>
 
-      <section className="section" aria-labelledby="token-snapshot-heading">
-        <p className="eyebrow">THE TOKEN</p>
-        <h2 id="token-snapshot-heading">Token snapshot</h2>
-        <p className="lede">
-          Ethereum mainnet concept • Contract address: not published • Tokenomics: not provided
-        </p>
-        <div className="grid-3">
-          <InfoCard accent="coral" title="Contract" body="Not published" />
-          <InfoCard accent="violet" title="Tokenomics" body="Not provided" />
-          <InfoCard
-            accent="turquoise"
-            title="Social links"
-            body={
-              isConfigured(site.links.twitter) || isConfigured(site.links.telegram)
-                ? "Official links configured"
-                : "TBD"
-            }
-          />
+      <section className="section" aria-labelledby="tokenomics-home-heading">
+        <p className="eyebrow">TOKENOMICS</p>
+        <h2 id="tokenomics-home-heading">Tokenomics</h2>
+        <div className="grid-2">
+          {tokenomicItems.map((item) => (
+            <InfoCard key={item.title} accent={item.accent} title={item.title} body={item.body} />
+          ))}
         </div>
+        <ContractControl address={site.contractAddress} />
       </section>
 
       <section className="panel panel-navy cta-panel" aria-labelledby="community-cta-heading">
         <div>
           <p className="eyebrow">COME FIND YOUR BEACH CHAIR</p>
           <h2 id="community-cta-heading">A little sun. A little Ethereum.</h2>
-          <p>
-            Join the community when official social links are ready. No purchase links or contract
-            address are published in this preview.
-          </p>
+          <p>Join the community.</p>
           <SocialActions />
         </div>
         <img

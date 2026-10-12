@@ -1,7 +1,7 @@
 import { ContractControl } from "../components/ContractControl"
 import { InfoCard } from "../components/InfoCard"
 import { PageMeta } from "../components/PageMeta"
-import { isConfigured, site, tickerLabel } from "../config/site"
+import { comingSoon, isConfigured, site, tickerLabel, tokenomicItems } from "../config/site"
 
 const steps = [
   {
@@ -25,17 +25,17 @@ export function TokenPage() {
   return (
     <div className="page">
       <PageMeta
-        title={`Token — ${site.name} (${tickerLabel})`}
-        description="Preview the intended information layout. Contract address, tokenomics, and social links remain placeholders until confirmed."
+        title={`Tokenomics — ${site.name} (${tickerLabel})`}
+        description="Tokenomics for Buterin Beach Break. The contract address is not published yet."
         path="/token"
       />
 
       <header className="page-intro">
         <p className="eyebrow">BUTERIN BEACH BREAK</p>
-        <h1>Token details, clearly marked.</h1>
+        <h1>Tokenomics, clearly marked.</h1>
         <p className="lede">
-          Preview the intended information layout. Contract address, tokenomics, and social links
-          remain placeholders until confirmed.
+          Supply, tax, liquidity, and ownership are listed below. The contract address is not
+          published yet.
         </p>
       </header>
 
@@ -43,33 +43,33 @@ export function TokenPage() {
         <p className="eyebrow">
           {isConfigured(site.contractAddress)
             ? "ETHEREUM MAINNET • CONTRACT PUBLISHED"
-            : "ETHEREUM MAINNET • CONTRACT NOT PUBLISHED"}
+            : "ETHEREUM MAINNET • CONTRACT COMING SOON"}
         </p>
         <h2 id="token-name">BUTERIN BEACH BREAK</h2>
         <p className="ticker-line">
           Ticker: <span>{tickerLabel}</span>
         </p>
-        <p>
-          No contract address or tokenomics were supplied for this preview. Do not use a
-          placeholder as a real contract.
-        </p>
+        <p>Do not use a placeholder as a real contract. The address shown can still be copied.</p>
         <ContractControl address={site.contractAddress} />
       </section>
 
       <div className="grid-3">
-        <InfoCard accent="coral" title="Contract address" body="Not published" />
-        <InfoCard accent="violet" title="Tokenomics" body="Not provided" />
-        <InfoCard accent="turquoise" title="Official links" body="TBD" />
+        <InfoCard
+          accent="coral"
+          title="Contract address"
+          body={isConfigured(site.contractAddress) ? site.contractAddress : comingSoon}
+        />
+        <InfoCard accent="violet" title="Tokenomics" body="Confirmed below" />
+        <InfoCard accent="turquoise" title="Official links" body="X and Telegram" />
       </div>
 
       <section className="section" aria-labelledby="tokenomics-heading">
         <p className="eyebrow">TOKENOMICS</p>
-        <h2 id="tokenomics-heading">Numbers stay blank until confirmed.</h2>
+        <h2 id="tokenomics-heading">Tokenomics</h2>
         <div className="grid-2">
-          <InfoCard accent="coral" title="Supply" body="TBD — not provided" />
-          <InfoCard accent="violet" title="Taxes" body="TBD — not provided" />
-          <InfoCard accent="turquoise" title="Liquidity" body="TBD — not provided" />
-          <InfoCard accent="navy" title="Ownership" body="TBD — not provided" />
+          {tokenomicItems.map((item) => (
+            <InfoCard key={item.title} accent={item.accent} title={item.title} body={item.body} />
+          ))}
         </div>
       </section>
 
@@ -92,8 +92,8 @@ export function TokenPage() {
       <aside className="panel panel-sand safety-note">
         <h2>Safety note</h2>
         <p>
-          This mockup is not a live buying guide. Contract address, liquidity details, tokenomics,
-          and links must be confirmed before publishing.
+          This is not a live buying guide until a contract address is published. Confirm the
+          Ethereum mainnet address before interacting.
         </p>
       </aside>
     </div>

@@ -35,11 +35,11 @@ describe("routes and pending facts", () => {
 
     const token = renderAt("/token")
     expect(
-      screen.getByRole("heading", { level: 1, name: /token details, clearly marked/i }),
+      screen.getByRole("heading", { level: 1, name: /tokenomics, clearly marked/i }),
     ).toBeInTheDocument()
-    expect(screen.getByRole("button", { name: /contract: tbd/i })).toBeDisabled()
-    expect(screen.getByText("Contract not published")).toBeInTheDocument()
-    expect(screen.queryByRole("button", { name: /copy contract/i })).not.toBeInTheDocument()
+    expect(screen.getByRole("button", { name: /copy address/i })).toBeEnabled()
+    expect(screen.getAllByText("Coming Soon..").length).toBeGreaterThan(0)
+    expect(screen.getByText("1,000,000,000")).toBeInTheDocument()
     token.unmount()
 
     renderAt("/community")
@@ -49,12 +49,15 @@ describe("routes and pending facts", () => {
     expect(screen.getAllByRole("img", { name: /sticker image is not available/i })).toHaveLength(12)
   })
 
-  it("keeps unpublished social destinations disabled", () => {
+  it("links the published social profiles", () => {
     renderAt("/")
-    const pending = screen.getAllByRole("button", { name: /telegram link tbd/i })
-    expect(pending.length).toBeGreaterThan(0)
-    pending.forEach((button) => expect(button).toBeDisabled())
-    expect(screen.queryByRole("link", { name: /telegram link tbd/i })).not.toBeInTheDocument()
+    expect(screen.getByRole("link", { name: /^telegram$/i })).toHaveAttribute(
+      "href",
+      "https://t.me/BBREAK_ETH",
+    )
+    expect(screen.getByRole("link", { name: /^x$/i })).toHaveAttribute("href", "https://x.com/bbreak_eth")
+    expect(screen.queryByText("NAME: BUTERIN BEACH BREAK")).not.toBeInTheDocument()
+    expect(screen.queryByText(/contract: not published/i)).not.toBeInTheDocument()
     expect(screen.getByRole("link", { name: /explore the story/i })).toHaveAttribute("href", "/story")
   })
 
@@ -87,7 +90,7 @@ describe("contract copy", () => {
     })
 
     const { unmount } = render(<ContractControl address="0xabc123" />)
-    fireEvent.click(screen.getByRole("button", { name: /copy contract/i }))
+    fireEvent.click(screen.getByRole("button", { name: /copy address/i }))
     expect(await screen.findByRole("button", { name: "Copied" })).toBeInTheDocument()
     expect(writeText).toHaveBeenCalledWith("0xabc123")
     expect(screen.getByText("0xabc123")).toHaveClass("copy-address")
@@ -100,8 +103,20 @@ describe("contract copy", () => {
       },
     })
     render(<ContractControl address="0xdef456" />)
-    fireEvent.click(screen.getByRole("button", { name: /copy contract/i }))
+    fireEvent.click(screen.getByRole("button", { name: /copy address/i }))
     expect(await screen.findByText(/select the address below/i)).toBeInTheDocument()
     expect(screen.getByText("0xdef456")).toBeInTheDocument()
+  })
+
+  it("copies Coming Soon when no contract is published", async () => {
+    const writeText = vi.fn().mockResolvedValue(undefined)
+    Object.defineProperty(navigator, "clipboard", {
+      configurable: true,
+      value: { writeText },
+    })
+    render(<ContractControl address={null} />)
+    fireEvent.click(screen.getByRole("button", { name: /copy address/i }))
+    expect(await screen.findByRole("button", { name: "Copied" })).toBeInTheDocument()
+    expect(writeText).toHaveBeenCalledWith("Coming Soon..")
   })
 })

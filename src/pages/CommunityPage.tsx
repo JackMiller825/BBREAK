@@ -21,12 +21,12 @@ const faqs = [
   {
     question: "What is the contract address?",
     answer:
-      "Not published. A contract address will only be added when confirmed through official project channels.",
+      "Coming Soon. A contract address will only be added when confirmed through official project channels.",
   },
   {
     question: "What are the tokenomics?",
     answer:
-      "Not provided. Supply, taxes, liquidity, and ownership details remain blank until confirmed.",
+      "Total supply is 1,000,000,000. Buy and sell tax is 0%. Liquidity status is Burn. Ownership status is Renounce.",
   },
   {
     question: "How do I buy?",
@@ -43,7 +43,7 @@ export function CommunityPage() {
     <div className="page">
       <PageMeta
         title={`Community — ${site.name} (${tickerLabel})`}
-        description="Community page concept for an independent fan project. Social destinations are placeholders until official links are supplied."
+        description="Community page for an independent fan project. Official X and Telegram links are listed on the page."
         path="/community"
       />
 
@@ -51,8 +51,7 @@ export function CommunityPage() {
         <p className="eyebrow">BUTERIN BEACH BREAK</p>
         <h1>Meet us by the palm shadow.</h1>
         <p className="lede">
-          Community page concept for an independent fan project. Social destinations are
-          placeholders until official links are supplied.
+          Community page for an independent fan project. Official X and Telegram links are below.
         </p>
       </header>
 
@@ -61,8 +60,8 @@ export function CommunityPage() {
           <p className="eyebrow">COMMUNITY / INVITE</p>
           <h2 id="join-heading">A place for the beach crew.</h2>
           <p>
-            Share the running jokes, the crystal badge, and your own beach-break reactions. Join
-            buttons stay inactive until official links are supplied.
+            Share the running jokes, the crystal badge, and your own beach-break reactions. Join the
+            community.
           </p>
           <SocialActions />
           <div className="promise">
@@ -99,7 +98,7 @@ export function CommunityPage() {
           body={
             isConfigured(site.links.telegram)
               ? "Official invite link is available above."
-              : "Community invite link: TBD"
+              : "Community invite link: Coming Soon.."
           }
         />
         <InfoCard
@@ -108,7 +107,7 @@ export function CommunityPage() {
           body={
             isConfigured(site.links.twitter)
               ? "Official profile link is available above."
-              : "Official profile link: TBD"
+              : "Official profile link: Coming Soon.."
           }
         />
         <InfoCard
